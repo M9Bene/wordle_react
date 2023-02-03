@@ -16,3 +16,11 @@
     border: 1px solid gray;
     color: black;
 }
+
+.correct {
+    background-color: #2de961;
+}
+
+.almost {
+    background-color: #e9e92d;
+}

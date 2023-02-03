@@ -3,9 +3,10 @@ import {GuessBar} from "./components/GuessBar";
 import {useEffect, useState} from "react";
 
 
-let defaultGuesses = [["", "", "", "", ""], ["", "", "", "", ""], ["", "", "", "", ""],
+const defaultGuesses = [["", "", "", "", ""], ["", "", "", "", ""], ["", "", "", "", ""],
     ["", "", "", "", ""], ["", "", "", "", ""], ["", "", "", "", ""]]
 
+const secretWord = ["T","I","G","E","R"];
 
 function App() {
 
@@ -66,7 +67,7 @@ function App() {
             <div className={"game-territory"}>
                 <div className={"guesses"}>
                     {defaultGuesses.map((guess, index) => (
-                        <GuessBar key={index} letters={guess}/>
+                        <GuessBar key={index} letters={guess} secretWord={secretWord} entered={index<roundNumber}/>
                     ))}
                 </div>
             </div>
