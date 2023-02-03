@@ -6,12 +6,29 @@
   color: white;
 }
 
-.Header {
+.header {
   background-color: blueviolet;
   height: 55px;
 }
 
-.Header p {
+.header p {
   font-size: xxx-large;
   margin: 0;
 }
+
+.game-territory {
+  top: 55px;
+  width: 100%;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.guesses {
+  margin-top: 25px;
+  width: 450px;
+  height: 430px;
+  border: 1px solid #b8a6b9;
+
+}
+
