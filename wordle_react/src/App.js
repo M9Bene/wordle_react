@@ -6,6 +6,7 @@ import {useEffect, useState} from "react";
 let defaultGuesses = [["", "", "", "", ""], ["", "", "", "", ""], ["", "", "", "", ""],
     ["", "", "", "", ""], ["", "", "", "", ""], ["", "", "", "", ""]]
 
+
 function App() {
 
     const [guesses, setGuesses] = useState(defaultGuesses);
@@ -31,19 +32,23 @@ function App() {
         setLetterNumber(letterNumber - 1);
     }
 
+    function ifOnlyLetters(event) {
+        return !!(event.which <= 90 && event.which >= 48 && event.key.match(/[A-z]/));
+    }
 
     const handleKeyUp = (event) => {
 
-        if (event.key === 'Backspace') {
+        if (event.key === 'Backspace' && letterNumber > 0) {
             onBackspaceEntered();
 
-        } else if (event.key === 'Enter') {
+        } else if (event.key === 'Enter' && letterNumber === 5) {
             onEnterPressed();
 
-        } else if (letterNumber < 5) {
+        } else if (letterNumber < 5 && ifOnlyLetters(event)) {
             onLetterPressed(event.key);
         }
     }
+
 
     useEffect(() => {
         window.addEventListener('keyup', handleKeyUp);
@@ -52,7 +57,6 @@ function App() {
             window.removeEventListener('keyup', handleKeyUp);
         }
     })
-
 
     return (
         <div className="App">
