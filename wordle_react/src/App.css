@@ -29,6 +29,8 @@
   width: 450px;
   height: 430px;
   border: 1px solid #b8a6b9;
-
+  flex-direction: column;
 }
+
+
 
