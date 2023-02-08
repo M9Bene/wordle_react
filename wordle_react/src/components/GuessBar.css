@@ -15,6 +15,7 @@
     font-size: 30px;
     border: 1px solid gray;
     color: black;
+    border-radius: 4px;
 }
 
 .correct {
@@ -23,4 +24,8 @@
 
 .almost {
     background-color: #e9e92d;
+}
+
+.wrong {
+    background-color: #a89292;
 }

@@ -11,7 +11,7 @@ export function GuessBar({letters, entered, secretWord}) {
                 if (entered) {
                     letter === secretWord[index] ? className = "guess-letter correct"
                         : secretWord.includes(letter) ? className = "guess-letter almost"
-                        : className = "guess-letter";
+                        : className = "guess-letter wrong";
                 }
                 return (
                     <div key={index} className={className}>
