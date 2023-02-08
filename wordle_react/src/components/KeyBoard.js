@@ -14,15 +14,15 @@ export function KeyBoard() {
     return (<div className={"keyboard"}>
         <div className={"keyboard-line"}>
 
-            {keyboard_line_1.map((key) => (
-                <Key value={key} className={'key'}/>
+            {keyboard_line_1.map((key, index) => (
+                <Key key={index} value={key} className={'key'}/>
             ))}
 
         </div>
         <div className={"keyboard-line"}>
 
-            {keyboard_line_2.map((key) => (
-                <Key value={key} className={'key'}/>
+            {keyboard_line_2.map((key, index) => (
+                <Key key={index} value={key} className={'key'}/>
             ))}
 
         </div>
@@ -30,8 +30,8 @@ export function KeyBoard() {
 
             <Key value={"Enter"} className={'enter key'}/>
 
-            {keyboard_line_3.map((key) => (
-                <Key value={key} className={'key'}/>
+            {keyboard_line_3.map( (key, index) => (
+                <Key key={index} value={key} className={'key'}/>
             ))}
 
             <Key value={"Backspace"} className={'backspace key'}/>
