@@ -1,7 +1,7 @@
 import React from "react";
+import {Key} from "./Key";
 import '../App.css';
 import './KeyBoard.css';
-
 
 
 export function KeyBoard() {
@@ -13,24 +13,28 @@ export function KeyBoard() {
 
     return (<div className={"keyboard"}>
         <div className={"keyboard-line"}>
+
             {keyboard_line_1.map((key) => (
-               <div className={'key'}>{key}</div>
-            ))
-            }
+                <Key value={key} className={'key'}/>
+            ))}
+
         </div>
         <div className={"keyboard-line"}>
+
             {keyboard_line_2.map((key) => (
-                <div className={'key'}>{key}</div>
-            ))
-            }
+                <Key value={key} className={'key'}/>
+            ))}
+
         </div>
         <div className={"keyboard-line"}>
-            <div className={'enter key'}>ENTER</div>
+
+            <Key value={"Enter"} className={'enter key'}/>
+
             {keyboard_line_3.map((key) => (
-                <div className={'key'}>{key}</div>
-            ))
-            }
-            <div className={'backspace key'}>Backspace</div>
+                <Key value={key} className={'key'}/>
+            ))}
+
+            <Key value={"Backspace"} className={'backspace key'}/>
         </div>
     </div>)
 }
