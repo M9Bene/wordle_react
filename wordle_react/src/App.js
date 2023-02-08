@@ -1,5 +1,6 @@
 import './App.css';
 import {GuessBar} from "./components/GuessBar";
+import {KeyBoard} from "./components/KeyBoard";
 import {useEffect, useState} from "react";
 
 
@@ -70,6 +71,7 @@ function App() {
                         <GuessBar key={index} letters={guess} secretWord={secretWord} entered={index<roundNumber}/>
                     ))}
                 </div>
+                <KeyBoard/>
             </div>
         </div>
     );

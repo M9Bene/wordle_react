@@ -1,0 +1,32 @@
+.keyboard {
+    width: 650px;
+    height: 250px;
+    margin-top: 10px;
+}
+
+.keyboard-line {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin: 0;
+}
+
+.key {
+    width: 50px;
+    height: 40px;
+    margin: 5px;
+    padding: 2px 0 0 0 ;
+    font-size: x-large;
+    border: 1px solid #b8a6b9;
+    cursor: pointer;
+}
+
+.enter {
+    background-color: #4a515a;
+    width: 110px;
+}
+
+.backspace {
+    background-color: #4a515a;
+    width: 140px;
+}
