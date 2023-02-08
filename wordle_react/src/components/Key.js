@@ -6,7 +6,17 @@ import './Key.css';
 
 export function Key({value, className}) {
 
-    const handleKeyUp = useContext(AppContext);
+    const {handleKeyUp, wrongLetters, correctLetters, almostLetters} = useContext(AppContext);
+
+    if(wrongLetters.includes(value)){
+        className = "wrong key";
+
+    }else if(correctLetters.includes(value)){
+        className= "correct key";
+
+    }else if(almostLetters.includes(value)){
+        className = "almost key";
+    }
 
     return (
         <div className={className} onClick={() => {

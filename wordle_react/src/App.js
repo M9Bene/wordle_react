@@ -16,6 +16,10 @@ function App() {
     const [roundNumber, setRoundNumber] = useState(0);
     const [letterNumber, setLetterNumber] = useState(0);
 
+    const [wrongLetters, setWrongLetters] = useState([]);
+    const [correctLetters, setCorrectLetters] = useState([]);
+    const [almostLetters, setAlmostLetters] = useState([]);
+
     function onLetterPressed(key) {
         let copy = [...guesses];
         copy[roundNumber][letterNumber] = key;
@@ -26,6 +30,17 @@ function App() {
     function onEnterPressed() {
         setRoundNumber(roundNumber + 1);
         setLetterNumber(0);
+
+        for (let i = 0; i < 5; i++) {
+            if (!secretWord.join("").includes(guesses[roundNumber][i])) {
+                setWrongLetters((prev) => [...prev, guesses[roundNumber][i]]);
+            }
+            else if (secretWord[i] === guesses[roundNumber][i]) {
+                setCorrectLetters((prev) => [...prev, guesses[roundNumber][i]]);
+            } else {
+                setAlmostLetters((prev) => [...prev, guesses[roundNumber][i]]);
+            }
+        }
     }
 
     function onBackspaceEntered() {
@@ -59,7 +74,7 @@ function App() {
                 }
             } else {
                 if (ifOnlyLetters(event)) {
-                    onLetterPressed(key.toUpperCase())
+                    onLetterPressed(key.toUpperCase());
                 }
             }
         }
@@ -85,7 +100,7 @@ function App() {
                         <GuessBar key={index} letters={guess} secretWord={secretWord} entered={index < roundNumber}/>
                     ))}
                 </div>
-                <AppContext.Provider value={handleKeyUp}>
+                <AppContext.Provider value={{handleKeyUp, wrongLetters, correctLetters, almostLetters}}>
                     <KeyBoard/>
                 </AppContext.Provider>
             </div>
