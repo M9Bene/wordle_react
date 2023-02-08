@@ -1,13 +1,14 @@
 import './App.css';
 import {GuessBar} from "./components/GuessBar";
 import {KeyBoard} from "./components/KeyBoard";
-import {useEffect, useState} from "react";
+import {createContext, useEffect, useState} from "react";
 
+export const AppContext = createContext();
 
 const defaultGuesses = [["", "", "", "", ""], ["", "", "", "", ""], ["", "", "", "", ""],
     ["", "", "", "", ""], ["", "", "", "", ""], ["", "", "", "", ""]]
 
-const secretWord = ["T","I","G","E","R"];
+const secretWord = ["T", "I", "G", "E", "R"];
 
 function App() {
 
@@ -38,16 +39,29 @@ function App() {
         return !!(event.which <= 90 && event.which >= 48 && event.key.match(/[A-z]/));
     }
 
-    const handleKeyUp = (event) => {
+    const handleKeyUp = (event, byClick = false) => {
+        console.log("handlekeyup function is called !")
 
-        if (event.key === 'Backspace' && letterNumber > 0) {
+        let key;
+        byClick ? key = event : key = event.key;
+
+        if (key === 'Backspace' && letterNumber > 0) {
             onBackspaceEntered();
 
-        } else if (event.key === 'Enter' && letterNumber === 5) {
+        } else if (key === 'Enter' && letterNumber === 5) {
             onEnterPressed();
 
-        } else if (letterNumber < 5 && ifOnlyLetters(event)) {
-            onLetterPressed(event.key);
+        } else if (letterNumber < 5) {
+
+            if (byClick) {
+                if (key !== "Enter" && key !== "Backspace") {
+                    onLetterPressed(key);
+                }
+            } else {
+                if (ifOnlyLetters(event)) {
+                    onLetterPressed(key)
+                }
+            }
         }
     }
 
@@ -68,10 +82,12 @@ function App() {
             <div className={"game-territory"}>
                 <div className={"guesses"}>
                     {defaultGuesses.map((guess, index) => (
-                        <GuessBar key={index} letters={guess} secretWord={secretWord} entered={index<roundNumber}/>
+                        <GuessBar key={index} letters={guess} secretWord={secretWord} entered={index < roundNumber}/>
                     ))}
                 </div>
-                <KeyBoard/>
+                <AppContext.Provider value={handleKeyUp}>
+                    <KeyBoard/>
+                </AppContext.Provider>
             </div>
         </div>
     );
