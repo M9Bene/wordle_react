@@ -18,7 +18,7 @@ function App() {
 
     function onLetterPressed(key) {
         let copy = [...guesses];
-        copy[roundNumber][letterNumber] = key.toUpperCase();
+        copy[roundNumber][letterNumber] = key;
         setGuesses(copy);
         setLetterNumber(letterNumber + 1);
     }
@@ -59,7 +59,7 @@ function App() {
                 }
             } else {
                 if (ifOnlyLetters(event)) {
-                    onLetterPressed(key)
+                    onLetterPressed(key.toUpperCase())
                 }
             }
         }
