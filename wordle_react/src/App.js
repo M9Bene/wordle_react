@@ -114,7 +114,7 @@ function App() {
                     ))}
                 </div>
                 <AppContext.Provider value={{handleKeyUp, wrongLetters, correctLetters, almostLetters}}>
-                    <KeyBoard/>
+                    { !gameOver && <KeyBoard/>}
                 </AppContext.Provider>
             </div>
         </div>
