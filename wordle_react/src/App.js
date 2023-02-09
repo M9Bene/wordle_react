@@ -20,6 +20,8 @@ function App() {
     const [correctLetters, setCorrectLetters] = useState([]);
     const [almostLetters, setAlmostLetters] = useState([]);
 
+    const [gameOver, setGameOver] = useState("");
+
     function onLetterPressed(key) {
         let copy = [...guesses];
         copy[roundNumber][letterNumber] = key;
@@ -27,20 +29,32 @@ function App() {
         setLetterNumber(letterNumber + 1);
     }
 
+
     function onEnterPressed() {
-        setRoundNumber(roundNumber + 1);
-        setLetterNumber(0);
+
+        const lastGuess = guesses[roundNumber];
+
+        if(secretWord.join("") === lastGuess.join("")){
+            alert("WON");
+           setGameOver("won");
+        }else if (roundNumber === 5){
+            setGameOver("lost");
+            alert("LOST");
+        }
 
         for (let i = 0; i < 5; i++) {
-            if (!secretWord.join("").includes(guesses[roundNumber][i])) {
-                setWrongLetters((prev) => [...prev, guesses[roundNumber][i]]);
+            if (!secretWord.join("").includes(lastGuess[i])) {
+                setWrongLetters((prev) => [...prev, lastGuess[i]]);
             }
-            else if (secretWord[i] === guesses[roundNumber][i]) {
-                setCorrectLetters((prev) => [...prev, guesses[roundNumber][i]]);
+            else if (secretWord[i] === lastGuess[i]) {
+                setCorrectLetters((prev) => [...prev, lastGuess[i]]);
             } else {
-                setAlmostLetters((prev) => [...prev, guesses[roundNumber][i]]);
+                setAlmostLetters((prev) => [...prev, lastGuess[i]]);
             }
         }
+
+        setRoundNumber(roundNumber + 1);
+        setLetterNumber(0);
     }
 
     function onBackspaceEntered() {
@@ -55,7 +69,6 @@ function App() {
     }
 
     const handleKeyUp = (event, byClick = false) => {
-        console.log("handlekeyup function is called !")
 
         let key;
         byClick ? key = event : key = event.key;
