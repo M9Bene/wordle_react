@@ -1,0 +1,12 @@
+.game-over {
+    color: #71dcff;
+    width: 650px;
+    height: 150px;
+    font-size: xx-large;
+    margin-top: 20px;
+}
+
+.game-over h2, h3 {
+    padding: 10px;
+    margin: 0;
+}

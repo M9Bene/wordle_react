@@ -1,6 +1,7 @@
 import './App.css';
 import {GuessBar} from "./components/GuessBar";
 import {KeyBoard} from "./components/KeyBoard";
+import {GameOver} from "./components/GameOver";
 import {createContext, useEffect, useState} from "react";
 
 export const AppContext = createContext();
@@ -29,24 +30,20 @@ function App() {
         setLetterNumber(letterNumber + 1);
     }
 
-
     function onEnterPressed() {
 
         const lastGuess = guesses[roundNumber];
 
-        if(secretWord.join("") === lastGuess.join("")){
-            alert("WON");
-           setGameOver("won");
-        }else if (roundNumber === 5){
-            setGameOver("lost");
-            alert("LOST");
+        if (secretWord.join("") === lastGuess.join("")) {
+            setGameOver("WON");
+        } else if (roundNumber === 5) {
+            setGameOver("LOST");
         }
 
         for (let i = 0; i < 5; i++) {
             if (!secretWord.join("").includes(lastGuess[i])) {
                 setWrongLetters((prev) => [...prev, lastGuess[i]]);
-            }
-            else if (secretWord[i] === lastGuess[i]) {
+            } else if (secretWord[i] === lastGuess[i]) {
                 setCorrectLetters((prev) => [...prev, lastGuess[i]]);
             } else {
                 setAlmostLetters((prev) => [...prev, lastGuess[i]]);
@@ -93,7 +90,6 @@ function App() {
         }
     }
 
-
     useEffect(() => {
         window.addEventListener('keyup', handleKeyUp);
 
@@ -113,8 +109,11 @@ function App() {
                         <GuessBar key={index} letters={guess} secretWord={secretWord} entered={index < roundNumber}/>
                     ))}
                 </div>
-                <AppContext.Provider value={{handleKeyUp, wrongLetters, correctLetters, almostLetters}}>
-                    { !gameOver && <KeyBoard/>}
+                <AppContext.Provider value={{
+                    handleKeyUp,
+                    wrongLetters, correctLetters, almostLetters, secretWord, gameOver
+                }}>
+                    {gameOver ? <GameOver/> : <KeyBoard/>}
                 </AppContext.Provider>
             </div>
         </div>
