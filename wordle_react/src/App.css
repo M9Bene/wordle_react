@@ -1,9 +1,16 @@
 .App {
   text-align: center;
   background-color: #282c34;
-  min-height: 100vh;
+  max-height: 100vh;
   width: 100vw;
   color: white;
+}
+
+html,
+body {
+  padding: 0;
+  margin: 0;
+  overflow: hidden;
 }
 
 .header {
@@ -17,6 +24,7 @@
 }
 
 .game-territory {
+  margin: 0 auto;
   top: 55px;
   width: 100%;
   align-items: center;
