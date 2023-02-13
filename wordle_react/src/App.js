@@ -3,16 +3,15 @@ import {GuessBar} from "./components/GuessBar";
 import {KeyBoard} from "./components/KeyBoard";
 import {GameOver} from "./components/GameOver";
 import {createContext, useEffect, useState} from "react";
+import {getSecretWord, getEmptyGuesses} from "./WordsHandler";
+
 
 export const AppContext = createContext();
 
-const defaultGuesses = [["", "", "", "", ""], ["", "", "", "", ""], ["", "", "", "", ""],
-    ["", "", "", "", ""], ["", "", "", "", ""], ["", "", "", "", ""]]
-
-const secretWord = ["T", "I", "G", "E", "R"];
+const defaultGuesses = getEmptyGuesses();
+const secretWord = getSecretWord();
 
 function App() {
-
     const [guesses, setGuesses] = useState(defaultGuesses);
     const [roundNumber, setRoundNumber] = useState(0);
     const [letterNumber, setLetterNumber] = useState(0);
