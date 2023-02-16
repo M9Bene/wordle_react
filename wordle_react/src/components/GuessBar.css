@@ -21,12 +21,15 @@
 
 .correct {
     background-color: #2de961;
+    color: #282c34;
 }
 
 .almost {
     background-color: #e9e92d;
+    color: #282c34;
 }
 
 .wrong {
     background-color: #a89292;
+    color: #282c34;
 }
