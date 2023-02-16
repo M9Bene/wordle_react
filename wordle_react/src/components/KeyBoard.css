@@ -1,7 +1,7 @@
 .keyboard {
-    width: 650px;
-    height: 250px;
-    margin-top: 10px;
+    max-width: 40em;
+    min-height: 25em;
+    margin: 4em;
 }
 
 .keyboard-line {
@@ -14,10 +14,10 @@
 
 .enter {
     background-color: #4a515a;
-    width: 110px;
+    min-width: 3em;
 }
 
 .backspace {
     background-color: #4a515a;
-    width: 140px;
+    min-width: 5em;
 }

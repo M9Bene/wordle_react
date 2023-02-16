@@ -1,8 +1,8 @@
 .key {
-    width: 50px;
-    height: 40px;
-    margin: 5px;
-    padding: 2px 0 0 0;
+    width: clamp(1em, 1.5em, 5em) ;
+    height: 1.8em;
+    margin: 0.5rem;
+    padding: 0 0.5em 0 0.5em;
     font-size: x-large;
     border: 1px solid #b8a6b9;
     cursor: pointer;
