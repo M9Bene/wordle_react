@@ -1,5 +1,5 @@
 # wordle_react
-A Wordle game web application.
+A Wordle (word guessing) game web application.
 
 ### Tech stack: 
 - Javascript
