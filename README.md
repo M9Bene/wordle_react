@@ -13,4 +13,4 @@ A Wordle game web application.
 
 ### Picture:
 
-![](/home/flashforward/Projects/PetProjects/wordle_react/my_wordle.png)
+![](wordle_react/src/pictures/my_wordle.png)
