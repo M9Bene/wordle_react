@@ -3,7 +3,7 @@
     height: 250px;
     margin-top: 10px;
     position: fixed;
-    bottom: 0;
+    bottom: 3em;
 }
 
 .keyboard-line {
@@ -16,10 +16,10 @@
 
 .enter {
     background-color: #4a515a;
-    width: 110px;
+    min-width: 4em;
 }
 
 .backspace {
     background-color: #4a515a;
-    width: 140px;
+    min-width: 6em;
 }

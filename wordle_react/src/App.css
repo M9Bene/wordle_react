@@ -35,7 +35,7 @@ body {
 .guesses {
   margin-top: 25px;
   width: 450px;
-  min-height: 20em;
+  min-height: 28em;
   border: 1px solid #b8a6b9;
   flex-direction: column;
 }

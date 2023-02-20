@@ -6,12 +6,12 @@
 }
 
 .guess-letter {
-    margin: 0.2em 0.25em;
+    margin: 0.3em 0.25em;
     flex: 33%;
     display: grid;
     background-color: #cdd3d8;
     place-items: center;
-    min-height: 1.5em;
+    min-height: 2em;
     font-size: 1.6em;
     font-weight: bolder;
     border: 1px solid gray;
