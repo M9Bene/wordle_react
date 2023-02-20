@@ -15,7 +15,7 @@ body {
 
 .header {
   background-color: blueviolet;
-  height: 55px;
+  min-height: 3em;
 }
 
 .header p {
@@ -35,7 +35,7 @@ body {
 .guesses {
   margin-top: 25px;
   width: 450px;
-  height: 430px;
+  min-height: 20em;
   border: 1px solid #b8a6b9;
   flex-direction: column;
 }
