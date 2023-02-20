@@ -2,6 +2,8 @@
     width: 650px;
     height: 250px;
     margin-top: 10px;
+    position: fixed;
+    bottom: 0;
 }
 
 .keyboard-line {
