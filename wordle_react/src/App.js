@@ -22,8 +22,9 @@ function App() {
     const [almostLetters, setAlmostLetters] = useState([]);
 
     const [gameOver, setGameOver] = useState("");
+    const [isModalActive, setIsModalActive] = useState(false);
 
-    function isLastGuessARealWord(){
+    function isLastGuessARealWord() {
         return allExistingWords.includes(guesses[roundNumber].join("").toLowerCase())
     }
 
@@ -70,6 +71,7 @@ function App() {
     }
 
     const handleKeyUp = (event, byClick = false) => {
+        setIsModalActive(false);
 
         let key;
         byClick ? key = event : key = event.key;
@@ -78,8 +80,10 @@ function App() {
             onBackspaceEntered();
 
         } else if (key === 'Enter' && letterNumber === 5) {
-            if(isLastGuessARealWord()){
+            if (isLastGuessARealWord()) {
                 onEnterPressed();
+            }else{
+                setIsModalActive(true);
             }
 
         } else if (letterNumber < 5) {
@@ -114,6 +118,9 @@ function App() {
                     {defaultGuesses.map((guess, index) => (
                         <GuessBar key={index} letters={guess} secretWord={secretWord} entered={index < roundNumber}/>
                     ))}
+                </div>
+                <div className={isModalActive ? "my-modal" : "my-modal invisible"}>
+                    You can only guess an existing word
                 </div>
                 <AppContext.Provider value={{
                     handleKeyUp,

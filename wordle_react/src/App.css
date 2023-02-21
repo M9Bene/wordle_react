@@ -40,5 +40,21 @@ body {
   flex-direction: column;
 }
 
+.my-modal{
+  background-color: #db3535;
+  padding: 0.5em;
+  border-radius: 5px;
+  margin: 1em;
+  z-index: 2;
+  font-size: xx-large;
+  font-weight: bolder;
+}
+
+.invisible{
+  visibility: hidden;
+}
+
+
+
 
 
