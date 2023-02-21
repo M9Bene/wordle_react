@@ -10,3 +10,7 @@ export function getSecretWord() {
     let secretWord = words[Math.trunc(Math.random() * words.length)].toUpperCase();
     return secretWord.split("");
 }
+
+export function getAllWords() {
+    return words;
+}
