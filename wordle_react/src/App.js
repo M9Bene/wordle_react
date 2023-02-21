@@ -3,13 +3,14 @@ import {GuessBar} from "./components/GuessBar";
 import {KeyBoard} from "./components/KeyBoard";
 import {GameOver} from "./components/GameOver";
 import {createContext, useEffect, useState} from "react";
-import {getSecretWord, getEmptyGuesses} from "./WordsHandler";
+import {getSecretWord, getEmptyGuesses, getAllWords} from "./WordsHandler";
 
 
 export const AppContext = createContext();
 
 const defaultGuesses = getEmptyGuesses();
 const secretWord = getSecretWord();
+const allExistingWords = getAllWords();
 
 function App() {
     const [guesses, setGuesses] = useState(defaultGuesses);
@@ -21,6 +22,10 @@ function App() {
     const [almostLetters, setAlmostLetters] = useState([]);
 
     const [gameOver, setGameOver] = useState("");
+
+    function isLastGuessARealWord(){
+        return allExistingWords.includes(guesses[roundNumber].join("").toLowerCase())
+    }
 
     function onLetterPressed(key) {
         let copy = [...guesses];
@@ -73,7 +78,9 @@ function App() {
             onBackspaceEntered();
 
         } else if (key === 'Enter' && letterNumber === 5) {
-            onEnterPressed();
+            if(isLastGuessARealWord()){
+                onEnterPressed();
+            }
 
         } else if (letterNumber < 5) {
 
