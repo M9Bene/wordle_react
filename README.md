@@ -8,7 +8,6 @@ A Wordle (word guessing) game web application.
 - (Html) + JSX
 
 ### Things to improve on later:
-- Validate input so the user can only make a guess with existing words.
 - Make the website responsive.
 
 ### Picture:
