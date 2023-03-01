@@ -10,6 +10,12 @@ A Wordle (word guessing) game web application.
 ### Things to improve on later:
 - Make the website responsive.
 
-### Picture:
+### Pictures:
 
-![](wordle_react/src/pictures/my_wordle.png)
+![](wordle_react/src/pictures/my_wordle_01.png)
+
+![](wordle_react/src/pictures/my_wordle_02.png)
+
+![](wordle_react/src/pictures/my_wordle_03.png)
+
+
