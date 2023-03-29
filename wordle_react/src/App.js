@@ -82,7 +82,7 @@ function App() {
         } else if (key === 'Enter' && letterNumber === 5) {
             if (isLastGuessARealWord()) {
                 onEnterPressed();
-            }else{
+            } else {
                 setIsModalActive(true);
             }
 
@@ -100,6 +100,28 @@ function App() {
         }
     }
 
+    const colorTheGuess = (letters, secretWord) => {
+
+        let lettersToCompare = [...secretWord];
+        let coloring = ["wrong", "wrong", "wrong", "wrong", "wrong"];
+
+        letters.forEach((letter, i) => {
+            if (letter === secretWord[i]) {
+                coloring[i] = "correct";
+                lettersToCompare.splice(lettersToCompare.indexOf(letter), 1);
+            }
+        })
+
+        letters.forEach((letter, i) => {
+            if (lettersToCompare.includes(letter) && coloring[i] !== "correct") {
+                coloring[i] = "almost";
+                lettersToCompare.splice(lettersToCompare.indexOf(letter), 1);
+            }
+        })
+
+        return coloring;
+    }
+
     useEffect(() => {
         window.addEventListener('keyup', handleKeyUp);
 
@@ -114,18 +136,20 @@ function App() {
                 <p>WORDLE</p>
             </div>
             <div className={"game-territory"}>
-                <div className={"guesses"}>
-                    {defaultGuesses.map((guess, index) => (
-                        <GuessBar key={index} letters={guess} secretWord={secretWord} entered={index < roundNumber}/>
-                    ))}
-                </div>
-                <div className={isModalActive ? "my-modal" : "my-modal invisible"}>
-                    You can only guess an existing word
-                </div>
                 <AppContext.Provider value={{
-                    handleKeyUp,
+                    handleKeyUp, colorTheGuess,
                     wrongLetters, correctLetters, almostLetters, secretWord, gameOver
                 }}>
+                    <div className={"guesses"}>
+                        {guesses.map((guess, index) => (
+                            <GuessBar key={index} letters={guess} entered={index < roundNumber}/>
+                        ))}
+                    </div>
+
+                    <div className={isModalActive ? "my-modal" : "my-modal invisible"}>
+                        You can only guess an existing word
+                    </div>
+
                     {gameOver ? <GameOver/> : <KeyBoard/>}
                 </AppContext.Provider>
             </div>
