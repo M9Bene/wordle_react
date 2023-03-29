@@ -1,17 +1,20 @@
-import React from "react";
+import React, {useContext} from "react";
 import '../App.css';
 import './GuessBar.css';
+import {AppContext} from "../App";
 
-export function GuessBar({letters, entered, secretWord}) {
+export function GuessBar({letters, entered}) {
+
+    const {secretWord, colorTheGuess} = useContext(AppContext);
+
+    let coloring = entered ?  colorTheGuess(letters, secretWord) : [];
 
     return (
         <div className={"guess-bar"}>
             {letters.map((letter, index) => {
-                let className = "guess-letter";
+                let className = "guess-letter ";
                 if (entered) {
-                    letter === secretWord[index] ? className = "guess-letter correct"
-                        : secretWord.includes(letter) ? className = "guess-letter almost"
-                        : className = "guess-letter wrong";
+                    className += coloring[index];
                 }
                 return (
                     <div key={index} className={className}>
