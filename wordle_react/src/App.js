@@ -134,6 +134,7 @@ function App() {
         <div className="App">
             <div className={"header"}>
                 <p>WORDLE</p>
+                <button className={"help-button"}>help</button>
             </div>
             <div className={"game-territory"}>
                 <AppContext.Provider value={{
