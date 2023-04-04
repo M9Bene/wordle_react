@@ -45,6 +45,52 @@ body {
   flex-direction: column;
 }
 
+.help-info-modal-backdrop {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: #252424cc;
+  height: 100%;
+  width: 100vw;
+}
+
+.help-info-modal {
+  background-color: rgb(250, 250, 250);
+  color: #000;
+  
+  position: fixed;
+  z-index: 3;
+  left: 50%;
+  top: 3em;
+
+  width: 30em;
+  min-width: 13em;
+  min-height: 25em;
+
+  font-size: large;
+  font-weight: bolder;
+  text-align: left;
+
+  padding: 2em;
+  border-radius: 5px;
+  margin: 0.5em;
+
+  transform: translateX(-50%);
+}
+
+.help-info-modal h1{
+  text-align: center;
+}
+
+.help-info-modal li{
+  margin: 0.5em 0;
+}
+
+.help-info-modal p{
+  margin: 3em 0 0 0;
+  text-align: center;
+}
+
 .my-modal{
   background-color: #db3535;
   padding: 0.5em;

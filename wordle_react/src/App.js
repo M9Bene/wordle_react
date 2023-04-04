@@ -23,6 +23,9 @@ function App() {
 
     const [gameOver, setGameOver] = useState("");
     const [isModalActive, setIsModalActive] = useState(false);
+    const [helpInfoModal, setHelpInfoModal] = useState(false);
+
+
 
     function isLastGuessARealWord() {
         return allExistingWords.includes(guesses[roundNumber].join("").toLowerCase())
@@ -72,6 +75,7 @@ function App() {
 
     const handleKeyUp = (event, byClick = false) => {
         setIsModalActive(false);
+        setHelpInfoModal(false);
 
         let key;
         byClick ? key = event : key = event.key;
@@ -134,7 +138,7 @@ function App() {
         <div className="App">
             <div className={"header"}>
                 <p>WORDLE</p>
-                <button className={"help-button"}>help</button>
+                <button className={"help-button"} onClick={() => setHelpInfoModal(true)}>help</button>
             </div>
             <div className={"game-territory"}>
                 <AppContext.Provider value={{
@@ -150,6 +154,41 @@ function App() {
                     <div className={isModalActive ? "my-modal" : "my-modal invisible"}>
                         You can only guess an existing word
                     </div>
+
+                    {helpInfoModal &&
+                        <div className='help-info-modal-backdrop' onClick={() => setHelpInfoModal(false)}>
+                        <div className={"help-info-modal"}>
+                            <h1>Info About The Game</h1>
+                            <section>
+                                <ul>
+                                    <li>
+                                        Guess the secret word in 6 tries
+                                    </li>
+                                    <li>
+                                        Each guess must be a 5 letter long english word
+                                    </li>
+                                    <li>
+
+                                        <p>The color of the tiles will change to help you</p>
+                                        <ul>
+                                            <li className={"correct"}>
+                                                Green --> The letter is in secret the word also in the correct position
+                                            </li>
+                                            <li className={"almost"}>
+                                                Yellow --> The letter is in secret the word but in a wrong position
+                                            </li>
+                                            <li className={"wrong"}>
+                                                Grey --> The letter is not in the secret word
+                                            </li>
+                                        </ul>
+
+                                    </li>
+                                </ul>
+                            </section>
+                            <p>(Click anywhere to exit from help information)</p>
+                        </div>
+                    </div>
+                    }
 
                     {gameOver ? <GameOver/> : <KeyBoard/>}
                 </AppContext.Provider>
