@@ -10,6 +10,7 @@ export function GameOver() {
     return (
         <div className={'game-over'}>
             <h2>You have {gameOver}</h2>
+            <button className={"restart-btn"} onClick={ () => window.location.reload()  }>Start New Game</button>
             <h3>the secret word was {secretWord}</h3>
         </div>
     )
